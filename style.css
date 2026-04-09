@@ -1,0 +1,637 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --deep-rose: #8B3A62;
+    --light-rose: #C85A75;
+    --ivory: #F5F1E8;
+    --soft-gold: #D4AF9A;
+    --rose-gold: #B76E79;
+    --dark-rose: #5C1A3C;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Georgia', 'Garamond', serif;
+    background: linear-gradient(135deg, var(--ivory) 0%, #FFF5F0 100%);
+    color: var(--dark-rose);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ==================== FALLING PETALS ANIMATION ==================== */
+
+.petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--light-rose);
+    border-radius: 50% 0;
+    opacity: 0.7;
+    animation: falling linear infinite;
+}
+
+.petal::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(-45deg);
+}
+
+@keyframes falling {
+    0% {
+        transform: translateY(-10px) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(100px);
+    }
+}
+
+/* ==================== HERO SECTION ==================== */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--ivory) 0%, #FFF0F5 50%, var(--ivory) 100%);
+    overflow: hidden;
+    z-index: 2;
+}
+
+#heartCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+}
+
+.floating-text {
+    font-size: 8rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: var(--deep-rose);
+    text-shadow: 
+        0 10px 30px rgba(139, 58, 98, 0.2),
+        0 0 60px rgba(200, 90, 117, 0.1);
+    animation: floating 4s ease-in-out infinite, fadeInOut 6s ease-in-out infinite;
+    font-style: italic;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* ==================== SCROLL INDICATOR ==================== */
+
+.scroll-indicator {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.scroll-indicator span {
+    display: block;
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--soft-gold);
+    border-radius: 15px;
+    position: relative;
+    animation: scroll 2s infinite;
+}
+
+.scroll-indicator span::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 6px;
+    height: 10px;
+    background: var(--soft-gold);
+    border-radius: 3px;
+    transform: translateX(-50%);
+    animation: scrolling 2s infinite;
+}
+
+@keyframes scroll {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes scrolling {
+    0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(12px);
+        opacity: 0;
+    }
+}
+
+/* MUSIC SECTION */
+.music-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, rgba(139, 58, 98, 0.1) 0%, rgba(212, 175, 154, 0.1) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.music-container {
+    max-width: 600px;
+    width: 100%;
+    background: rgba(245, 241, 232, 0.98);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(139, 58, 98, 0.2);
+    text-align: center;
+}
+
+.music-container h2 {
+    color: #8B3A62;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+/* AUDIO PLAYER WRAPPER */
+.audio-player-wrapper {
+    margin: 20px 0;
+}
+
+.audio-player-wrapper audio {
+    outline: none;
+    filter: invert(0.8);
+}
+
+/* PLAYER CONTROLS */
+.player-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    padding: 12px 25px;
+    font-size: 1em;
+    background: linear-gradient(135deg, #8B3A62 0%, #D4AF9A 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 58, 98, 0.3);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+/* PROGRESS CONTAINER */
+.progress-container {
+    margin: 30px 0;
+    background: rgba(139, 58, 98, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.progress-slider {
+    width: 100%;
+    height: 6px;
+    background: rgba(139, 58, 98, 0.2);
+    border-radius: 10px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.progress-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #8B3A62;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(139, 58, 98, 0.5);
+}
+
+.progress-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #8B3A62;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(139, 58, 98, 0.5);
+}
+
+.time-info {
+    color: #8B3A62;
+    font-size: 0.9em;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* LYRICS BOX */
+.lyrics-box {
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(139, 58, 98, 0.08) 0%, rgba(212, 175, 154, 0.08) 100%);
+    border: 2px solid rgba(139, 58, 98, 0.2);
+    border-radius: 15px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lyrics-text {
+    font-size: 1.6em;
+    color: #8B3A62;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.8;
+    text-align: center;
+    animation: lyricGlow 2s ease-in-out infinite;
+}
+
+@keyframes lyricGlow {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 5px rgba(139, 58, 98, 0.3);
+    }
+    50% {
+        opacity: 0.8;
+        text-shadow: 0 0 15px rgba(139, 58, 98, 0.5);
+    }
+}
+
+.lyrics-text.highlight {
+    color: #E74C3C;
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.6);
+    font-size: 1.8em;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .music-container {
+        padding: 30px 20px;
+    }
+
+    .music-container h2 {
+        font-size: 1.8em;
+    }
+
+    .player-controls {
+        gap: 10px;
+    }
+
+    .control-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .lyrics-text {
+        font-size: 1.2em;
+    }
+}
+
+/* ==================== MEMORIES SECTION ==================== */
+
+.memories-section {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, var(--ivory) 0%, #FFE8F0 100%);
+    z-index: 2;
+}
+
+.memories-content {
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+}
+
+.memories-content h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    color: var(--deep-rose);
+    letter-spacing: 2px;
+}
+
+.memory-card {
+    background: rgba(255, 245, 240, 0.7);
+    border-left: 5px solid var(--soft-gold);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(139, 58, 98, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: cardReveal 1s ease-out;
+}
+
+@keyframes cardReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.memory-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 15px 40px rgba(139, 58, 98, 0.2);
+    border-left-color: var(--light-rose);
+}
+
+.memory-card p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--dark-rose);
+}
+
+/* ==================== FINAL MESSAGE SECTION ==================== */
+
+.final-message {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #FFE8F0 0%, var(--ivory) 50%, #FFF5F0 100%);
+    z-index: 2;
+}
+
+.message-wrapper {
+    text-align: center;
+    animation: messageReveal 1.5s ease-out;
+}
+
+@keyframes messageReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.bengali-text {
+    font-size: 2.5rem;
+    color: var(--deep-rose);
+    letter-spacing: 1px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    text-shadow: 0 5px 15px rgba(139, 58, 98, 0.15);
+    animation: textGlow 3s ease-in-out infinite;
+    font-weight: 400;
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 0 5px 15px rgba(139, 58, 98, 0.15);
+    }
+    50% {
+        text-shadow: 0 8px 25px rgba(212, 175, 154, 0.3);
+    }
+}
+
+.signature {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid var(--soft-gold);
+}
+
+.signature p {
+    font-size: 1.3rem;
+    color: var(--light-rose);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.signature-name {
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--deep-rose);
+    font-weight: 300;
+}
+
+/* ==================== FOOTER ==================== */
+
+footer {
+    position: relative;
+    background: var(--dark-rose);
+    color: var(--ivory);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+@media (max-width: 1024px) {
+    .floating-text {
+        font-size: 5rem;
+    }
+
+    .memories-content h2,
+    .music-container h2,
+    .bengali-text {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-text {
+        font-size: 3.5rem;
+        letter-spacing: 2px;
+    }
+
+    .music-container h2,
+    .memories-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    .music-player {
+        padding: 25px;
+    }
+
+    .memory-card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .memory-card p {
+        font-size: 1rem;
+    }
+
+    .bengali-text {
+        font-size: 1.6rem;
+        line-height: 1.6;
+    }
+
+    .signature p {
+        font-size: 1rem;
+    }
+
+    .signature-name {
+        font-size: 1.5rem;
+    }
+
+    .petal {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-text {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+
+    .music-container h2,
+    .memories-content h2 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .music-player {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .memory-card {
+        padding: 15px;
+        margin-bottom: 15px;
+        border-left-width: 3px;
+    }
+
+    .memory-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .bengali-text {
+        font-size: 1.3rem;
+        line-height: 1.5;
+        letter-spacing: 0.5px;
+    }
+
+    .signature p {
+        font-size: 0.9rem;
+    }
+
+    .signature-name {
+        font-size: 1.2rem;
+    }
+
+    .petal {
+        width: 10px;
+        height: 10px;
+    }
+
+    #audioElement {
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    footer {
+        padding: 20px 15px;
+        font-size: 0.9rem;
+    }
+}

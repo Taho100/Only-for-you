@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You - Forever Yours</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Falling Rose Petals Container -->
+    <div class="petals-container" id="petalsContainer"></div>
+
+    <!-- Hero Section with Liquid Heart Animation -->
+    <section class="hero">
+        <canvas id="heartCanvas"></canvas>
+        <div class="hero-content">
+            <h1 class="floating-text">I Love You</h1>
+        </div>
+    </section>
+
+    <!-- Navigation Indicator -->
+    <div class="scroll-indicator">
+        <span></span>
+    </div>
+
+    <!-- MUSIC EXPERIENCE SECTION -->
+<section id="music-section" class="music-section">
+    <div class="music-container">
+        <h2>it's for you Ms. Puspo💖</h2>
+        
+        <!-- AUDIO PLAYER SEMPLIFICATO -->
+        <div class="audio-player-wrapper">
+            <audio id="audioPlayer" style="width: 100%; margin: 20px;">
+                <source src="music/chayna meye.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- MANUAL CONTROLS -->
+        <div class="player-controls">
+            <button id="playBtn" class="control-btn">▶️ Play</button>
+            <button id="pauseBtn" class="control-btn">⏸️ Pause</button>
+            <button id="stopBtn" class="control-btn">⏹️ Restart</button>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="progress-container">
+            <input type="range" id="progressSlider" class="progress-slider" min="0" max="100" value="0">
+            <div class="time-info">
+                <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+            </div>
+        </div>
+
+        <!-- LYRICS -->
+        <div class="lyrics-box">
+            <div id="lyricsText" class="lyrics-text">
+                Play the song...
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Memories Section -->
+  <!--  <section class="memories-section">
+        <div class="memories-content">
+            <h2>Our Memories</h2>
+            <div class="memory-card">
+                <p>Every moment with you feels like forever. Your smile, your voice, your presence - everything about you makes my heart flutter.</p>
+            </div>
+            <div class="memory-card">
+                <p>I promise to cherish every second, every memory, and every kiss we share. You are my greatest treasure.</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Final Message Section -->
+    <section class="final-message">
+        <div class="message-wrapper">
+            <h2 class="bengali-text">মিস জাকিয়া সুলতানা পুষ্প, আমি আপনাকে অনেক ভালোবাসি। ❤️🌹✨</h2>
+            <div class="signature">
+                <p>With all my love,</p>
+                <p class="signature-name">Your Forever Love</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 | Made with ❤️ for someone special</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
