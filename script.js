@@ -44,7 +44,7 @@ function createPetal() {
 }
 
 // Create petals continuously
-setInterval(createPetal, 300);
+setInterval(createPetal, 1200);
 
 // Create initial petals on page load
 for (let i = 0; i < 15; i++) {
