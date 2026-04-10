@@ -258,7 +258,7 @@ pauseBtn.addEventListener('click', () => {
 
 // STOP BUTTON
 stopBtn.addEventListener('click', () => {
-    audioPlayer.pause();
+    audioPlayer.play();
     audioPlayer.currentTime = 0;
     progressSlider.value = 0;
     currentTimeDisplay.textContent = '0:00';
