@@ -258,11 +258,12 @@ pauseBtn.addEventListener('click', () => {
 
 // STOP BUTTON
 stopBtn.addEventListener('click', () => {
-    audioPlayer.play();
+    audioPlayer.pause();
     audioPlayer.currentTime = 0;
     progressSlider.value = 0;
     currentTimeDisplay.textContent = '0:00';
     lyricsText.textContent = 'Ascolta la nostra canzone...';
+    audioPlayer.play();
     console.log('⏹️ Stopped');
 });
 
